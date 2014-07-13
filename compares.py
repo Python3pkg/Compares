@@ -4,7 +4,7 @@ except ImportError:
     import repr as reprlib
 
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 def via(fields):
