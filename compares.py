@@ -1,7 +1,7 @@
 try:
     import reprlib
 except ImportError:
-    import repr as reprlib
+    import reprlib as reprlib
 
 
 __version__ = "0.1.1"

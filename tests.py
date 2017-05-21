@@ -23,7 +23,7 @@ class HasARepr(object):
 
 class TestComparesVia(TestCase):
     def test_fields(self):
-        self.assertEqual(Foo(foo=12, bar=u"Hello").fields, ("foo", "bar"))
+        self.assertEqual(Foo(foo=12, bar="Hello").fields, ("foo", "bar"))
 
     def test_repr(self):
         self.assertEqual(
@@ -31,26 +31,26 @@ class TestComparesVia(TestCase):
         )
 
     def test_eq(self):
-        self.assertTrue(Foo(foo=12, bar=u"yes") == Foo(foo=12, bar=u"yes"))
-        self.assertFalse(Foo(foo=12, bar=u"no") == Foo(foo=12, bar=u"yes"))
+        self.assertTrue(Foo(foo=12, bar="yes") == Foo(foo=12, bar="yes"))
+        self.assertFalse(Foo(foo=12, bar="no") == Foo(foo=12, bar="yes"))
 
     def test_ne(self):
-        self.assertTrue(Foo(foo=12, bar=u"no") != Foo(foo=12, bar=u"yes"))
-        self.assertFalse(Foo(foo=12, bar=u"yes") != Foo(foo=12, bar=u"yes"))
+        self.assertTrue(Foo(foo=12, bar="no") != Foo(foo=12, bar="yes"))
+        self.assertFalse(Foo(foo=12, bar="yes") != Foo(foo=12, bar="yes"))
 
     def test_eq_does_not_know_about_random_objects(self):
         self.assertIs(
-            Foo(foo=12, bar=u"Hello").__eq__(object()), NotImplemented,
+            Foo(foo=12, bar="Hello").__eq__(object()), NotImplemented,
         )
 
     def test_ne_does_not_know_about_random_objects(self):
         self.assertIs(
-            Foo(foo=12, bar=u"Hello").__ne__(object()), NotImplemented,
+            Foo(foo=12, bar="Hello").__ne__(object()), NotImplemented,
         )
 
     def test_contents(self):
         self.assertEqual(
-            Foo(foo=12, bar=u"yes")._contents, [("foo", 12), ("bar", u"yes")],
+            Foo(foo=12, bar="yes")._contents, [("foo", 12), ("bar", "yes")],
         )
 
     def test_it_detects_if_the_class_defines_some_attributes_already(self):
